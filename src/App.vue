@@ -1,16 +1,41 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <input v-model="timertitle" placeholder="Enter Timer Title">
+    <input type="number" min=1 v-model="counttime.seconds" placeholder="Enter seconds here">
+    <button v-on:click="addTimer">Add Timer</button>  
+  </div>
+
+  <div v-for="timer in timers" :key="timer.id">
+    <CountdownTimer :title="timer.title" :seconds="timer.seconds" />
+  </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CountdownTimer from './components/CountdownTimer.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    CountdownTimer,
+  },
+  data () {
+    return {
+      counttime: {
+        seconds:0,
+      },
+      timertitle:"",
+      timers:[],
+    }
+  },
+  methods: {
+    addTimer(){
+      let tobject = {title:this.timertitle, seconds:this.counttime.seconds};
+      this.timers.push(tobject);
+      console.log(this.timers);
+    },
+  },
 }
 </script>
 
