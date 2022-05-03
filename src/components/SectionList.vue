@@ -5,11 +5,11 @@
       <th>Seconds</th>
       <th>Action</th>
     </tr>
-    <tr v-for="timer in $store.state.timers" :key="timer.id" class="section-row">
+    <tr v-for="(timer,index) in $store.state.timers" :key="index" class="section-row">
       <td>{{timer.title}}</td>
       <td>{{timer.seconds}}</td>
       <td>
-        <button v-on:click="updateStorage(timer.id)">
+        <button v-on:click="updateStorage(index)">
           Delete
         </button>
       </td>

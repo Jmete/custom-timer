@@ -2,7 +2,8 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    timers: []
+    timers: [],
+    totalsecs: 0,
   },
   getters: {
   },
@@ -19,6 +20,16 @@ export default createStore({
         state.timers = JSON.parse(localStorage.getItem('timers') || "[]");
       }
     },
+    decreaseTotalSecs(state){
+      state.totalsecs--
+    },
+    initSeconds(state){
+      let secs = 0;
+      state.timers.forEach(function(timer){
+        secs = secs + timer.seconds;
+      })
+      state.totalsecs = secs;
+    }
   },
   actions: {
   },

@@ -1,6 +1,8 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <h1>CUSTOM TIMER</h1>
+
+  <MainTimer />
 
   <div>
     <button id="downloadButton" v-on:click="downloadJSON">Download Timer Config</button> 
@@ -25,6 +27,7 @@ import CountdownTimer from './components/CountdownTimer.vue'
 import SectionList from './components/SectionList.vue'
 import {saveAs} from 'file-saver';
 import store from './store';
+import MainTimer from './components/MainTimer.vue';
 
 export default {
   name: 'App',
@@ -35,6 +38,7 @@ export default {
   components: {
     CountdownTimer,
     SectionList,
+    MainTimer,
   },
   data () {
     return {
@@ -47,21 +51,25 @@ export default {
   },
   computed: {
     getTimerJSON() {
-      return "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.timers));
+      return "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(store.state.timers));
     }
   },
   methods: {
     addTimer(){
-      let tid = this.timers.length + 1
-      let tobject = {id:tid, title:this.timertitle, seconds:this.counttime.seconds};
-      store.commit("addTimer",tobject);
-      console.log("Store Timers is:")
-      console.log(store.state.timers);
-      localStorage.setItem('timers',JSON.stringify(store.state.timers))
-      console.log(localStorage.getItem('timers'));
+      // let tid = store.timers.length + 1;
+      if (this.counttime.seconds > 0){
+        let tobject = {title:this.timertitle, seconds:Math.round(this.counttime.seconds)};
+        store.commit("addTimer",tobject);
+        console.log("Store Timers is:");
+        console.log(store.state.timers);
+        localStorage.setItem('timers',JSON.stringify(store.state.timers));
+        store.commit("initSeconds");
+      } else{
+        alert("Please enter seconds as an integer greater than 0.")
+      }
     },
     downloadJSON(){
-      console.log(this.getTimerJSON)
+      console.log(this.getTimerJSON);
       new Promise(resolve => {
         resolve(saveAs(this.getTimerJSON,"timerconfig.json"));
       })
