@@ -9,24 +9,32 @@
   <div>
     <input v-model="timertitle" placeholder="Enter Timer Title">
     <input type="number" min=1 v-model="counttime.seconds" placeholder="Enter seconds here">
-    <button v-on:click="addTimer">Add Timer</button>  
+    <button v-on:click="addTimer">Add Section</button>  
   </div>
 
-  <div v-for="timer in timers" :key="timer.id">
+  <SectionList />
+  <!-- <div v-for="timer in timers" :key="timer.id">
     <CountdownTimer :title="timer.title" :seconds="timer.seconds" />
     <button @click="removeElement(timer.id)">Delete Timer</button>
-  </div>
+  </div> -->
 
 </template>
 
 <script>
 import CountdownTimer from './components/CountdownTimer.vue'
+import SectionList from './components/SectionList.vue'
 import {saveAs} from 'file-saver';
+import store from './store';
 
 export default {
   name: 'App',
+  beforeCreate(){
+    console.log(localStorage.getItem('timers'));
+    store.commit('initStore');
+  },
   components: {
     CountdownTimer,
+    SectionList,
   },
   data () {
     return {
@@ -46,12 +54,11 @@ export default {
     addTimer(){
       let tid = this.timers.length + 1
       let tobject = {id:tid, title:this.timertitle, seconds:this.counttime.seconds};
-      this.timers.push(tobject);
-      console.log(this.timers);
-    },
-    removeElement(itemID) {
-      let i = this.timers.map(item => item.id).indexOf(itemID) // find index of your object
-      this.timers.splice(i, 1) // remove it from arrays
+      store.commit("addTimer",tobject);
+      console.log("Store Timers is:")
+      console.log(store.state.timers);
+      localStorage.setItem('timers',JSON.stringify(store.state.timers))
+      console.log(localStorage.getItem('timers'));
     },
     downloadJSON(){
       console.log(this.getTimerJSON)
