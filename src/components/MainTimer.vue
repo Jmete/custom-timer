@@ -2,17 +2,42 @@
   <div class="TheTimer">
     <div v-if="!finished">
       <!-- <p>{{$store.state.totalsecs}}</p> -->
-      <p>{{$store.state.sectiontitle}}</p>
-      <p>{{$store.state.sectionseconds}}</p>
+      <p class="text-lg font-medium" >{{$store.state.sectiontitle}}</p>
+      <p class="text-3xl my-4 font-extrabold" >{{$store.state.sectionseconds}}</p>
+      <div>
+        <button 
+        class="mx-4 pt-1 px-4 rounded-full border-2 border-slate-800 hover:bg-gray-200" 
+        v-on:click="prev_section">Prev
+        </button>
+
+        <button
+        class="mx-4 pt-1 px-4 rounded-full border-2 border-slate-800 hover:bg-gray-200" 
+        v-on:click="next_section">Next
+        </button>
+      </div>
+
     </div>
     <div v-else>Finished</div>
-    <!-- <div>{{$store.state.timers}}</div> -->
-    <button v-if="showstart" v-on:click="start_loop">Start Timer</button>
-    <button v-else v-on:click="pause_loop">Pause</button>
-    <button v-if="showstart" v-on:click="init_seconds">Reset</button>
-    <br />
-    <button v-on:click="prev_section">Prev</button>
-    <button v-on:click="next_section">Next</button>
+    <div class="inline-block mt-4">
+      <button 
+      class="mx-2 pt-1 px-4 rounded-full border-2 border-green-300 hover:bg-green-300 hover:text-white" 
+      v-if="showstart && !finished" 
+      v-on:click="start_loop">Start Timer
+      </button>
+
+      <button
+      class="mx-2 pt-1 px-4 rounded-full border-2 border-red-300 hover:bg-red-300 hover:text-white"
+      v-if="!showstart" 
+      v-on:click="pause_loop">Pause
+      </button>
+
+      <button 
+      class="mx-2 pt-1 px-4 rounded-full border-2 border-slate-800 hover:bg-gray-200" 
+      v-if="showstart" 
+      v-on:click="init_seconds">Reset
+      </button>
+
+    </div>
 
 
 

@@ -47,9 +47,15 @@ export default createStore({
       } else{
         state.sectionseconds = 0;
       }
-    }
+    },
+    updateTimers(state,data){
+      state.timers = data;
+    },
   },
   actions: {
+    updateTimers({commit},data){
+      commit("updateTimers",data);
+    },
   },
   modules: {
   }

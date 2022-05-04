@@ -1,20 +1,40 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-  <h1>CUSTOM TIMER</h1>
+  <h1 class="text-blue-500 text-4xl mb-8 font-black">CUSTOM TIMER</h1>
 
   <MainTimer />
 
-  <div>
-    <button id="downloadButton" v-on:click="downloadJSON">Download Timer Config</button> 
-  </div>
+  <div class="max-w-lg mx-auto grid grid-cols-3 gap-3 h-8 mt-6">
+    <input 
+    v-model="timertitle" 
+    placeholder="Enter Timer Title"
+    class="text-center" >
+    
+    <input 
+    type="number" 
+    min=1 
+    v-model="counttime.seconds" 
+    placeholder="Enter seconds here"
+    class="text-center" >
 
-  <div>
-    <input v-model="timertitle" placeholder="Enter Timer Title">
-    <input type="number" min=1 v-model="counttime.seconds" placeholder="Enter seconds here">
-    <button v-on:click="addTimer">Add Section</button>  
+    <button 
+    v-on:click="addTimer" 
+    class="rounded-full bg-blue-400 text-white align-baseline hover:bg-blue-500">Add Section
+    </button>  
+
   </div>
 
   <SectionList />
+
+  <div class="mt-4">
+    <button 
+    id="downloadButton" 
+    v-on:click="downloadJSON" 
+    class="px-4 rounded-full bg-gray-200 text-gray-400 align-baseline hover:bg-gray-400 hover:text-white"
+    >
+    Download Timer Config
+    </button> 
+  </div>
 
 </template>
 
