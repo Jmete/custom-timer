@@ -58,6 +58,8 @@ export default {
         console.log(store.state.timers);
         localStorage.setItem('timers',JSON.stringify(store.state.timers));
         store.commit("initSeconds");
+        store.commit("updateSection",store.state.timers[0]);
+        store.commit("updateSectionIndex",0);
       } else{
         alert("Please enter seconds as an integer greater than 0.")
       }

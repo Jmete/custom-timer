@@ -42,6 +42,11 @@ export default createStore({
         secs = secs + timer.seconds;
       })
       state.totalsecs = secs;
+      if (state.timers[0]){
+        state.sectionseconds = state.timers[0].seconds;
+      } else{
+        state.sectionseconds = 0;
+      }
     }
   },
   actions: {
