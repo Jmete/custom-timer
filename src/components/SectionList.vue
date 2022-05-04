@@ -24,8 +24,9 @@ export default {
   name: 'SectionList',
   methods:{
     updateStorage(tid){
-      store.commit('removeElement',tid)
-      localStorage.setItem('timers',JSON.stringify(store.state.timers))
+      store.commit('removeElement',tid);
+      localStorage.setItem('timers',JSON.stringify(store.state.timers));
+      store.commit("initSeconds");
     }
   }
 }

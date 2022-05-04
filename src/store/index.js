@@ -4,6 +4,9 @@ export default createStore({
   state: {
     timers: [],
     totalsecs: 0,
+    sectiontitle: "",
+    sectionseconds: 0,
+    sectionindex:0,
   },
   getters: {
   },
@@ -22,6 +25,16 @@ export default createStore({
     },
     decreaseTotalSecs(state){
       state.totalsecs--
+    },
+    decreaseSectionSecs(state){
+      state.sectionseconds--
+    },
+    updateSection(state,data){
+      state.sectiontitle = data.title;
+      state.sectionseconds = data.seconds;
+    },
+    updateSectionIndex(state,data){
+      state.sectionindex = data;
     },
     initSeconds(state){
       let secs = 0;
