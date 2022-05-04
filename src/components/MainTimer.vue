@@ -10,7 +10,6 @@
     <button v-if="showstart" v-on:click="start_loop">Start Timer</button>
     <button v-else v-on:click="pause_loop">Pause</button>
     <button v-if="showstart" v-on:click="init_seconds">Reset</button>
-    <!-- <button v-on:click="start_loop">Loop Sections</button> -->
     <br />
     <button v-on:click="prev_section">Prev</button>
     <button v-on:click="next_section">Next</button>
@@ -48,9 +47,11 @@ export default {
       this.showstart = true;
       this.finished = false;
       store.commit("initSeconds");
-      store.commit("updateSection",store.state.timers[0]);
+      if (store.state.timers[0]){
+        store.commit("updateSection",store.state.timers[0]);
+      }
       store.commit("updateSectionIndex",0);
-      console.log("Seconds initialized")
+      console.log("Seconds initialized");
     },
     start_loop(){
       this.pauseloop = false;

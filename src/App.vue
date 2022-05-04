@@ -15,15 +15,10 @@
   </div>
 
   <SectionList />
-  <!-- <div v-for="timer in timers" :key="timer.id">
-    <CountdownTimer :title="timer.title" :seconds="timer.seconds" />
-    <button @click="removeElement(timer.id)">Delete Timer</button>
-  </div> -->
 
 </template>
 
 <script>
-import CountdownTimer from './components/CountdownTimer.vue'
 import SectionList from './components/SectionList.vue'
 import {saveAs} from 'file-saver';
 import store from './store';
@@ -36,7 +31,6 @@ export default {
     store.commit('initStore');
   },
   components: {
-    CountdownTimer,
     SectionList,
     MainTimer,
   },
