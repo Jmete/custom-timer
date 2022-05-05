@@ -7,7 +7,7 @@
   <div class="max-w-lg mx-auto grid grid-cols-3 gap-3 mt-4 py-2 border-t-2 border-b-2">
     <input 
     v-model="timertitle" 
-    placeholder="Enter Timer Title"
+    placeholder="Enter Section Name"
     class="text-center" >
     
     <input 
