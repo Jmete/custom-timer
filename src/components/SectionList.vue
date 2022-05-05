@@ -11,7 +11,9 @@
           <div>{{timer.title}}</div>
           <div>{{timer.seconds}}</div>
           <div>
-            <button v-on:click="updateStorage(index)">
+            <button 
+            class="border-2 border-gray-200 px-2 rounded-full hover:bg-gray-200"
+            v-on:click="updateStorage(index)">
               Delete
             </button>
           </div>
@@ -34,11 +36,6 @@ export default {
   data() {
     return {
       drag: false,
-      items:[
-        {no:1, name:'キャベツ', categoryNo:'1'},
-        {no:2, name:'ステーキ', categoryNo:'2'},
-        {no:3, name:'リンゴ', categoryNo:'3'}
-      ]
     }
   },
   computed:{
