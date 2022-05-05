@@ -4,7 +4,7 @@
 
   <MainTimer />
 
-  <div class="max-w-lg mx-auto grid grid-cols-3 gap-3 h-8 mt-6">
+  <div class="max-w-lg mx-auto grid grid-cols-3 gap-3 mt-4 py-2 border-t-2 border-b-2">
     <input 
     v-model="timertitle" 
     placeholder="Enter Timer Title"
@@ -19,7 +19,7 @@
 
     <button 
     v-on:click="addTimer" 
-    class="rounded-full bg-blue-400 text-white align-baseline hover:bg-blue-500">Add Section
+    class="pt-1 rounded-full border-2 border-blue-300 text-gray-500 align-baseline hover:bg-blue-300 hover:text-white">Add Section
     </button>  
 
   </div>
@@ -28,12 +28,25 @@
 
   <div class="mt-4">
     <button 
+    id="importJSON"
+    v-on:click="uploadJSON"
+    class="px-6 pt-1 rounded-full border-2 border-slate-800 text-gray-400 hover:bg-gray-200"
+    >
+    Import Config
+    </button>
+
+    <button 
     id="downloadButton" 
     v-on:click="downloadJSON" 
-    class="px-4 rounded-full bg-gray-200 text-gray-400 align-baseline hover:bg-gray-400 hover:text-white"
+    class="px-6 pt-1 rounded-full border-2 border-slate-800 text-gray-400 hover:bg-gray-200"
     >
-    Download Timer Config
+    Download Config
     </button> 
+
+    <br>
+
+    <input type="file" id="selectJSON" class="bg-gray-200 text-gray-500">
+
   </div>
 
 </template>
@@ -92,6 +105,23 @@ export default {
       .then(result => console.log("Done downloading") )
       .catch(err => console.log("Error downloading: " + err));
     },
+    uploadJSON(){
+      // Based on code from tackoverflow
+      const files = document.getElementById('selectJSON').files;
+      if (files.length <= 0) {
+        console.log("Please upload a file");
+        return false;
+      }
+
+      const fr = new FileReader();
+
+      fr.onload = e => {
+        const result = JSON.parse(e.target.result);
+        this.$store.dispatch("updateTimers",result);
+        localStorage.setItem('timers',JSON.stringify(store.state.timers));
+      }
+      fr.readAsText(files.item(0));
+    }
   },
 }
 </script>
@@ -109,4 +139,18 @@ export default {
 #downloadButton{
   margin:20px;
 }
+
+input[type=file]::file-selector-button {
+  border: 2px solid #d8d8d8;
+  padding: .2em .4em;
+  border-radius: .2em;
+  transition: 0.1s;
+  background-color: white;
+  color:#707070;
+}
+
+input[type=file]::file-selector-button:hover {
+  background-color: #e0e0e0;
+}
+
 </style>
