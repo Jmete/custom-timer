@@ -13,8 +13,17 @@
         class="section-row grid grid-cols-4 gap-3 p-1 cursor-pointer
         hover:bg-gray-100
         ">
-          <div class="col-span-2" >{{timer.title}}</div>
-          <div class="col-span-1" >{{timer.seconds}}</div>
+          <input 
+          class="text-center col-span-2" 
+          :value="$store.getters.getSectionTitle(index)"
+          @input="updateSectionTitle($event,index)">
+
+          <input
+          type="number"
+          min="1" 
+          class="text-center col-span-1" 
+          :value="$store.getters.getSectionSeconds(index)"
+          @input="updateSectionSeconds($event,index)">
 
           <div class="col-span-1" >
 
@@ -83,6 +92,22 @@ export default {
       store.commit('removeElement',tid);
       localStorage.setItem('timers',JSON.stringify(store.state.timers));
       store.commit("initSeconds");
+    },
+    updateSectionTitle(event,index){
+      store.commit('updateSectionTitle',[event.target.value,index]);
+      localStorage.setItem('timers',JSON.stringify(store.state.timers));
+      if (store.state.timers[0]){
+        store.commit("updateSection",store.state.timers[0]);
+      }
+      store.commit("updateSectionIndex",0);
+    },
+    updateSectionSeconds(event,index){
+      store.commit('updateSectionSeconds',[event.target.value,index]);
+      localStorage.setItem('timers',JSON.stringify(store.state.timers)); 
+      if (store.state.timers[0]){
+        store.commit("updateSection",store.state.timers[0]);
+      }
+      store.commit("updateSectionIndex",0);
     }
   }
 };
