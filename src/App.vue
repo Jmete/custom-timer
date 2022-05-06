@@ -49,6 +49,20 @@
 
   </div>
 
+  <div class="">
+  <footer class="grid grid-cols-5 w-full fixed bottom-0 mx-auto">
+    <a 
+    href="http://jamesmete.com" 
+    class="text-sm col-span-2 text-left pl-10 text-gray-500 hover:text-gray-700">&copy; James Mete 2022</a>
+    <div class="col-span-2"></div>
+    <div class="col-span-1 grid grid-cols-3">
+      <a href="https://github.com/Jmete"><i class="fa-brands fa-github text-gray-500 hover:text-gray-700"></i></a>
+      <a href="https://twitter.com/Jmete"><i class="fa-brands fa-twitter text-gray-500 hover:text-blue-500"></i></a>
+      <a href="http://jamesmete.com"><i class="fa-solid fa-globe text-gray-500 hover:text-gray-700"></i></a>
+    </div>
+  </footer>
+  </div>
+
 </template>
 
 <script>
