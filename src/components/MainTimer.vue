@@ -1,9 +1,9 @@
 <template>
-  <div class="TheTimer">
+  <div class="text-gray-600">
     <div v-if="!finished">
       <!-- <p>{{$store.state.totalsecs}}</p> -->
       <p class="text-lg font-medium" >{{$store.state.sectiontitle}}</p>
-      <p class="text-3xl my-4 font-extrabold" >{{$store.state.sectionseconds}}</p>
+      <p class="text-5xl my-4 font-extrabold" >{{$store.state.sectionseconds}}</p>
       <div>
         <button 
         class="mx-4 pt-1 px-4 rounded-full border-2 border-slate-800 hover:bg-gray-200" 
@@ -37,9 +37,8 @@
       v-on:click="init_seconds">Reset
       </button>
 
+
     </div>
-
-
 
   </div>
 </template>
@@ -142,11 +141,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
 
-.TheTimer{
-  color:grey;
-}
 </style>
