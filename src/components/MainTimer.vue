@@ -126,14 +126,22 @@ export default {
         if (store.state.timers[index+1]){
           store.commit("updateSection",store.state.timers[index+1]);
           store.commit("updateSectionIndex",index+1);
+          // Play audio beep
+          var singlebeep = new Audio(require("@/assets/single-beep.wav"));
+          singlebeep.play();
+          // Continue
           this.next_second(store.state.sectionindex);
         }else{
           console.log("Finished");
+          // Play final beeps
+          var fivebeeps = new Audio(require("@/assets/five-beeps.wav"));
+          fivebeeps.play();
+          // Set to finished state
           this.finished = true;
-          this.showstart = true;  
+          this.showstart = true;
+        }  
         }
       }
-    }
 
   },
 }
