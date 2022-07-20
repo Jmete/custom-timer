@@ -17,7 +17,7 @@
       </div>
 
     </div>
-    <div v-else>Finished</div>
+    <div v-else class="p-4 text-red-300 font-extrabold text-3xl">Finished</div>
     <div class="inline-block mt-4">
       <button 
       class="mx-2 pt-1 px-4 rounded-full border-2 border-green-300 hover:bg-green-300 hover:text-white" 
