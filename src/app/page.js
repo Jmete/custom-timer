@@ -9,14 +9,17 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { Toaster } from "react-hot-toast";
 
 export default function Home() {
-  const [sections, setSections] = useState(() => {
+  const [sections, setSections] = useState([]);
+
+  useEffect(() => {
     const savedSections = localStorage.getItem("sections");
     if (savedSections) {
-      return JSON.parse(savedSections);
+      const savedSectionsParsed = JSON.parse(savedSections);
+      setSections(savedSectionsParsed);
     } else {
-      return [];
+      setSections([]);
     }
-  });
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("sections", JSON.stringify(sections));
