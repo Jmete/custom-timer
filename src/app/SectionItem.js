@@ -1,5 +1,6 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
+import { TimeFormat } from "./utils";
 
 const SectionItem = ({
   section,
@@ -36,8 +37,12 @@ const SectionItem = ({
               />
               <input
                 type="text"
-                defaultValue={section.time}
-                onChange={(e) => (section.time = e.target.value)}
+                defaultValue={section.time / 60}
+                onChange={(e) => {
+                  const timeInSeconds = e.target.value * 60;
+                  section.time = timeInSeconds;
+                  section.formatTime = TimeFormat(timeInSeconds);
+                }}
                 className="border-2 border-gray-300 p-2 w-32"
               />
               <button
@@ -51,7 +56,7 @@ const SectionItem = ({
             <div className="flex">
               <p className="text-md font-light	text-gray-300 flex mr-4 m-auto">
                 <div className="text-slate-500 mr-2">{section.name}</div>|
-                <div className="ml-2 text-slate-500">{section.time}</div>s |
+                <div className="mx-2 text-slate-500">{section.formatTime}</div>|
               </p>
               <div className="gap-4 flex flex-row">
                 <button
