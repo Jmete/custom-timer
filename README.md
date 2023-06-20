@@ -1,4 +1,4 @@
-![Timer Logo](public/timer-logo.svg){:width="50%" height="50%"}
+<img src="./public/timer-logo.svg" width="50%">
 
 A simple web app built using next.js that allows you to time out entire meeting agendas to keep everyone on the same page.
 
