@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 392.98 299.21">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: 12.48px;
+      }
+
+      .cls-1, .cls-2 {
+        stroke: #414042;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-3 {
+        fill: #414042;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke-width: 17.47px;
+      }
+
+      .cls-4 {
+        letter-spacing: 0em;
+      }
+
+      .cls-5 {
+        letter-spacing: 0em;
+      }
+
+      .cls-3 {
+        font-family: Kiona-Regular, Kiona;
+        font-size: 130px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <g>
+        <circle class="cls-2" cx="196.49" cy="83.04" r="74.31"/>
+        <polygon class="cls-1" points="196.49 94.29 162.09 144.05 230.89 144.05 196.49 94.29"/>
+        <path class="cls-1" d="m187.77,106.24l-11.59-13.26c-.12-.14-.19-.32-.19-.5v-18.86c0-.19.07-.36.19-.5l11.59-13.26c.15-.17.36-.26.58-.26h16.28c.22,0,.43.1.58.26l11.59,13.26c.12.14.19.32.19.5v18.86c0,.19-.07.36-.19.5l-11.59,13.26c-.15.17-.36.26-.58.26h-16.28c-.22,0-.43-.1-.58-.26Z"/>
+        <polygon class="cls-1" points="196.49 71.77 162.09 22.01 230.89 22.01 196.49 71.77"/>
+      </g>
+      <text class="cls-3" transform="translate(1.23 273.21)"><tspan x="0" y="0">T</tspan><tspan class="cls-4" x="86.97" y="0">IM</tspan><tspan class="cls-5" x="233.21" y="0">E</tspan><tspan x="310.17" y="0">R</tspan></text>
+    </g>
+  </g>
+</svg>
