@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
+import { TimeFormat } from "./utils";
 
 const SectionForm = ({ addSection }) => {
   const [name, setName] = useState("");
@@ -10,7 +11,11 @@ const SectionForm = ({ addSection }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (name !== "" && time !== "" && time > 0) {
-      addSection({ name, time: parseInt(time) });
+      addSection({
+        name,
+        time: parseFloat(time) * 60,
+        formatTime: TimeFormat(parseFloat(time) * 60),
+      });
       setName("");
       setTime("");
     } else {
@@ -34,7 +39,7 @@ const SectionForm = ({ addSection }) => {
         type="number"
         value={time}
         onChange={(e) => setTime(e.target.value)}
-        placeholder="Time in Seconds"
+        placeholder="Time in Minutes"
         className="border-2 border-gray-300 rounded-lg px-3 py-2 md:mr-3 text-md"
       />
       <button
