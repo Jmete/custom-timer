@@ -10,4 +10,5 @@ Features include:
 - Client-side rendering and local storage. Your topics are safe.
 
 Created by James Mete
+
 [jamesmete.com](https://jamesmete.com)
