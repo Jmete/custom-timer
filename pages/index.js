@@ -11,7 +11,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>Work Meeting Timer</title>
-        <meta name="description" content="Work Meeting Timer" />
+        <meta name="description" content="Meeting Timer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
